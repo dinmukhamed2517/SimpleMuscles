@@ -1,0 +1,27 @@
+.category video{
+  width: 550px;
+}
+.category i{
+  font-size: 24px;
+}
+.main {
+  border:1px solid;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.category {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+}
+#favorite{
+  color:grey;
+}
+.favorite{
+  position: absolute;
+  top:.5rem;
+  right
+}

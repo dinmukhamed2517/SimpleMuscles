@@ -1,0 +1,9 @@
+<div class="main">
+  <div class="exercises" *ngFor = "let exercise of exercises">
+    <div class="category">
+      <i>{{exercise.name}}</i>
+      <a><video controls autoplay src="{{exercise.url}}"></video></a>
+      <span class ="favorite {{exercise.favorite?'':'not'}}">♥</span>
+    </div>
+  </div>
+</div>
