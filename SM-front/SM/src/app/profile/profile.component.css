@@ -1,0 +1,103 @@
+/* Global Styles */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+header, main, footer {
+  margin: 0 auto;
+  max-width: 960px;
+  padding: 20px;
+}
+
+h1, h2 {
+  color: #444;
+  text-align: center;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: #2196F3;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* User Profile Page Styles */
+.user-info, .user-activity {
+  margin: 20px 0;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+}
+
+.user-info h2, .user-activity h2 {
+  margin-top: 0;
+}
+
+.user-info p {
+  margin: 10px 0;
+}
+
+.user-activity li {
+  margin-bottom: 10px;
+}
+
+.user-activity li:last-child {
+  margin-bottom: 0;
+}
+.main{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid;
+}
+.name{
+  border: 1px solid;
+}
+.favorite{
+  font-size: 40px;
+  margin-left: 120px;
+  color:red;
+}
+.exercises{
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+}
+.favorite:hover{
+  color:grey;
+  opacity: 50%;
+}
+.favorite.not{
+  color:grey
+}
+.favorite.not:hover{
+  opacity: 50%;
+  color:red;
+}
+.inf h1{
+  color:black;
+  font-size: 45px;
+}
+.inf h1:hover{
+  opacity: 50%;
+  font-size: 44px;
+  text-decoration: underline;
+}
+.logout{
+  background-color: #00003f;
+  color:white;
+  border-radius: 5px;
+  border:none;
+  height: 30px;
+}

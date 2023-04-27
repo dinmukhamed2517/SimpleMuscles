@@ -1,13 +1,15 @@
 .main{
   width: 100%;
+  height: 1000px;
   margin-top:10px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
+  background-image: url("/assets/bg-2.jpg");
 }
 .categories{
-  border:2px solid #38E60B;
+  border:2px solid lightgoldenrodyellow;
   margin:10px;
   display: flex;
   flex-direction: row;
@@ -25,7 +27,20 @@
   width : 200px;
 }
 .category i{
-  color:green;
+  color:white;
   font-weight: bold;
 }
-
+.inf {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.inf h1{
+  color:white;
+  font-size: 45px;
+}
+.inf h1:hover{
+  opacity: 50%;
+  font-size: 44px;
+  text-decoration: underline;
+}

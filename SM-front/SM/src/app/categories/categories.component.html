@@ -1,8 +1,17 @@
-<div class="main">
-  <div class="categories" *ngFor = "let category of categories">
-    <div class="category">
-      <i>{{category.name}}</i>
-      <a routerLink="/categories/{{category.id}}"><img src="{{category.url}}" alt=""></a>
+<ng-container *ngIf="logged">
+  <div class="main">
+    <div class="categories" *ngFor = "let category of categories">
+      <div class="category">
+        <i>{{category.name}}</i>
+        <a routerLink="/categories/{{category.id}}">1<img src="{{category.url}}" alt=""></a>
+      </div>
     </div>
   </div>
-</div>
+</ng-container>
+<ng-container *ngIf="!logged">
+  <div class="main">
+    <div class="inf">
+       <h1 routerLink="/login">Please log in </h1>
+    </div>
+  </div>
+</ng-container>

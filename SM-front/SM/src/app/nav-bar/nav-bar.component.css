@@ -1,5 +1,5 @@
 nav {
-  background-color: #19004F;
+  background-color: #00003f;
   overflow: hidden;
 }
 *{
@@ -26,7 +26,7 @@ nav li.logo img {
 }
 nav li a {
   display: block;
-  color: #E617BA;
+  color: white;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
@@ -56,14 +56,13 @@ nav li.register {
 }
 
 nav li.register a {
-  background-color: white;
-  color: #E617BA;
+  color: white;
   border: 1px solid white;
   border-radius: 5px;
   padding: 8px 16px;
 }
 
 nav li.register a:hover {
-  background-color: #333;
-  color: white;
+  background-color: white;
+  color: black;
 }

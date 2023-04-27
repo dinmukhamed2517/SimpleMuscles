@@ -50,3 +50,12 @@ button[type="submit"]:hover {
   color:black;
   opacity: 50%;
 }
+button{
+  background-color: #3e8e41;
+  border: none;
+  border-radius: 5px;
+  width: 50px;
+  height: 25px;
+  color:white;
+  margin-left: 170px;
+}

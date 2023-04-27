@@ -1,16 +1,21 @@
 
 .main{
+  border:1px solid;
+  height: 800px;
+  width:100%;
+  background-image:url("/assets/bg.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 75px;
 }
 .start:hover {
   background-color: #3e8e41;
 }
 .main h1{
-  color: black;
+  color: white;
   font-size: 32px;
   font-weight: bold;
   margin-right: 20px;

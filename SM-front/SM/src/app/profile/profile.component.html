@@ -1,1 +1,25 @@
-<p>profile works!</p>
+<ng-container *ngIf="logged">
+  <main>
+    <section class="user-info">
+      <h2>John's Information</h2>
+      <p><b>Name</b>: John Doe</p>
+      <p><b>Email</b>: john.doe@example.com</p>
+      <button (click)="logout()" class="logout"> Log out</button>
+    </section>
+
+    <section class="user-activity">
+      <h2>John's Favorites</h2>
+      <div class="main">
+        <div *ngFor = "let exercise of favoriteExercises" class="exercises">
+            <div class="name"> <a routerLink="/categories/{{exercise.categoryId}}/{{exercise.id}}"><h2>{{exercise.name}}</h2></a></div>
+            <button (click)="remove(exercise.id)"> Remove </button>
+        </div>
+      </div>
+    </section>
+  </main>
+</ng-container>
+<ng-container *ngIf="!logged">
+  <div class="inf">
+    <h1 routerLink="/login">Please log in</h1>
+  </div>
+</ng-container>

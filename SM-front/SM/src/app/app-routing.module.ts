@@ -7,6 +7,7 @@ import {RegisterComponent} from "./register/register.component";
 import {CategoriesComponent} from "./categories/categories.component";
 import {ExercisesComponent} from "./exercises/exercises.component";
 import {ProfileComponent} from "./profile/profile.component";
+import {ExerciseDetailsComponent} from "./exercise-details/exercise-details.component";
 
 const routes: Routes = [
   {
@@ -19,7 +20,7 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    component : LoginComponent
+    component:LoginComponent
   },
   {
     path : 'register',
@@ -30,8 +31,12 @@ const routes: Routes = [
     component: CategoriesComponent
   },
   {
-    path: 'categories/:categoryId',
+    path: 'categories/:category_id',
     component: ExercisesComponent
+  },
+  {
+    path:'categories/:category_id/:exercise_id',
+    component:ExerciseDetailsComponent
   },
   {
     path: "profile",

@@ -11,6 +11,10 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ExercisesComponent } from './exercises/exercises.component';
 import { ProfileComponent } from './profile/profile.component';
+import { ExerciseDetailsComponent } from './exercise-details/exercise-details.component';
+import {FormsModule} from "@angular/forms";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {AuthInterceptor} from "../AuthInterceptor";
 
 @NgModule({
   declarations: [
@@ -22,13 +26,22 @@ import { ProfileComponent } from './profile/profile.component';
     LoginComponent,
     RegisterComponent,
     ExercisesComponent,
-    ProfileComponent
+    ProfileComponent,
+    ExerciseDetailsComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,9 +1,10 @@
 <div class="main">
   <div class="exercises" *ngFor = "let exercise of exercises">
     <div class="category">
-      <i>{{exercise.name}}</i>
+      <a class ="link" routerLink="{{exercise.id}}"><i>{{exercise.name}}</i></a>
       <a><video controls autoplay src="{{exercise.url}}"></video></a>
-      <span class ="favorite {{exercise.favorite?'':'not'}}">♥</span>
+      <button (click)="addToFavorite(exercise.id)"> Add to favorite</button>
+<!--      <span (click)="isFavorite(exercise)" class ="favorite {{exercise.favorite?'':'not'}}">♥</span>-->
     </div>
   </div>
 </div>

@@ -6,5 +6,4 @@ export interface Exercise{
   categoryId : number
   description: string;
   url : string;
-  favorite:boolean;
 }

@@ -17,11 +17,25 @@
   align-items: center;
   margin: 20px;
 }
-#favorite{
-  color:grey;
-}
 .favorite{
-  position: absolute;
-  top:.5rem;
-  right
+  font-size: 35px;
+  color:red;
+}
+.favorite:hover{
+  color:grey;
+  opacity: 50%;
+}
+.favorite.not{
+  color:grey
+}
+.favorite.not:hover{
+  opacity: 50%;
+  color:red;
+}
+.link{
+  text-decoration: none;
+  color:black;
+}
+.link:hover{
+  text-decoration: underline;
 }

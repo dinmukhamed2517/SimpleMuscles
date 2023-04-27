@@ -2,17 +2,11 @@
   <h1>Login</h1>
   <form action="" method="post">
     <label for="username">Username</label>
-    <input type="text" id="username" name="username" required>
-
+    <input type="text" id="username" name="username" required [(ngModel)]="username">
     <label for="password">Password</label>
-    <input type="password" id="password" name="password" required>
-
-    <button type="submit" routerLink="/categories">Login</button>
-
-    <div class="error">Incorrect username or password.</div>
-    <div class="no-account">
-      <a routerLink="/register">Don't have an account?</a>
-    </div>
+    <input type="password" id="password" name="password" required [(ngModel)]="password">
+    <button (click)="logIn()">Login</button>
   </form>
 </div>
+
 

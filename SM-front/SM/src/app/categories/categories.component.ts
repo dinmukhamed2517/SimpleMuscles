@@ -9,9 +9,20 @@ import {Category} from "../../models/category";
 })
 export class CategoriesComponent implements OnInit{
   categories!: Category[];
+  logged : boolean  = false;
   ngOnInit():void {
-    this.categories = this.CategoryService.getAll();
+    const token = localStorage.getItem('token');
+    if(token){
+      this.logged =true;
+      this.getCategories();
+    }
   }
   constructor(private CategoryService : CategoryService) {
   }
+  getCategories(){
+    this.CategoryService.getCategories().subscribe((data)=>{
+      this.categories = data;
+    })
+  }
 }
+
