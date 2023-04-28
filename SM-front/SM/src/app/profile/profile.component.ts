@@ -4,6 +4,7 @@ import {FavoriteService} from "../services/favorite/favorite.service";
 import {Favorite} from "../../models/Favorite";
 import {ExerciseService} from "../services/exercises/exercise.service";
 import {UserService} from "../services/user/user.service";
+import {User} from "../../models/User";
 
 @Component({
   selector: 'app-profile',
@@ -13,6 +14,7 @@ import {UserService} from "../services/user/user.service";
 export class ProfileComponent implements OnInit{
   favorite!: Favorite;
   user_id!:number;
+  user!:User;
   favoriteExercises:Exercise[] = []
   logged: boolean = false;
   constructor(private exerciseService:ExerciseService,private userService:UserService,
@@ -36,8 +38,8 @@ export class ProfileComponent implements OnInit{
     this.favoriteService.getFavorite(this.user_id).subscribe((data) =>{
       this.favorite = data;
       this.favoriteExercises = this.favorite.exercises;
-      console.log(this.favoriteExercises)
-    })
+      this.user = this.favorite.user
+      })
   }
   remove(exercise_id:number){
     this.favoriteService.removeFromFavorite(exercise_id).subscribe((data) => {

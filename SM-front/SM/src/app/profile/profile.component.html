@@ -1,18 +1,18 @@
 <ng-container *ngIf="logged">
   <main>
     <section class="user-info">
-      <h2>John's Information</h2>
-      <p><b>Name</b>: John Doe</p>
-      <p><b>Email</b>: john.doe@example.com</p>
+      <h2>{{user.username}}'s Information</h2>
+      <p><b>Name</b>: {{user.first_name}} {{user.last_name}} </p>
+      <p><b>Email</b>: {{user.email}}</p>
       <button (click)="logout()" class="logout"> Log out</button>
     </section>
 
     <section class="user-activity">
-      <h2>John's Favorites</h2>
+      <h2>{{user.username}} Favorites</h2>
       <div class="main">
         <div *ngFor = "let exercise of favoriteExercises" class="exercises">
             <div class="name"> <a routerLink="/categories/{{exercise.categoryId}}/{{exercise.id}}"><h2>{{exercise.name}}</h2></a></div>
-            <button (click)="remove(exercise.id)"> Remove </button>
+            <button (click)="remove(exercise.id)" class = "remove-btn"> Remove </button>
         </div>
       </div>
     </section>

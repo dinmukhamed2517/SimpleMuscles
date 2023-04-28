@@ -73,6 +73,7 @@ a:hover {
   display: flex;
   flex-direction: column;
   width: 250px;
+  align-items: center;
 }
 .favorite:hover{
   color:grey;
@@ -100,4 +101,18 @@ a:hover {
   border-radius: 5px;
   border:none;
   height: 30px;
+}
+.logout:hover{
+  background-color: red;
+}
+.remove-btn{
+  margin-top: 10px;
+  border-radius: 5px;
+  border:none;
+  background-color: grey;
+  color:white;
+  width: 100px;
+}
+.remove-btn:hover{
+  background-color: red;
 }

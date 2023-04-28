@@ -1,4 +1,5 @@
 <div class="container">
+  <ng-container *ngIf="!logged">
   <h1>Login</h1>
   <form action="" method="post">
     <label for="username">Username</label>
@@ -7,6 +8,7 @@
     <input type="password" id="password" name="password" required [(ngModel)]="password">
     <button (click)="logIn()">Login</button>
   </form>
+  </ng-container>
 </div>
 
 

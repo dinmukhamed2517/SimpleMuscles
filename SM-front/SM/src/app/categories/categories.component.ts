@@ -13,8 +13,8 @@ export class CategoriesComponent implements OnInit{
   ngOnInit():void {
     const token = localStorage.getItem('token');
     if(token){
-      this.logged =true;
       this.getCategories();
+      this.logged =true;
     }
   }
   constructor(private CategoryService : CategoryService) {
