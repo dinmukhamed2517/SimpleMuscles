@@ -1,8 +1,9 @@
 <div class="main">
   <div class="exercise">
-
     <h2>{{exercise.name}}</h2>
-    <video controls autoplay src="{{exercise.url}}"></video>
-    <h2>{{exercise.description}}</h2>
+    <img src="{{exercise.url}}" alt="">
+    <button *ngIf="logged"   (click)="addToFavorite(exercise.id)" class = "favorite-button"> Add to favorite</button>
+    <h3>Instructions:</h3>
+    <p>{{exercise.description}}</p>
   </div>
 </div>

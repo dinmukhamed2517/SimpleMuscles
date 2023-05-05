@@ -8,6 +8,9 @@ import {CategoriesComponent} from "./categories/categories.component";
 import {ExercisesComponent} from "./exercises/exercises.component";
 import {ProfileComponent} from "./profile/profile.component";
 import {ExerciseDetailsComponent} from "./exercise-details/exercise-details.component";
+import {CreateExerciseComponent} from "./create-exercise/create-exercise.component";
+import {UpdateExerciseComponent} from "./update-exercise/update-exercise.component";
+import {AllExercisesComponent} from "./all-exercises/all-exercises.component";
 
 const routes: Routes = [
   {
@@ -41,6 +44,18 @@ const routes: Routes = [
   {
     path: "profile",
     component: ProfileComponent
+  },
+  {
+    path: "create",
+    component: CreateExerciseComponent
+  },
+  {
+    path: "update",
+    component: AllExercisesComponent
+  },
+  {
+    path: "update/:exercise_id",
+    component: UpdateExerciseComponent
   },
   {
     path: '',

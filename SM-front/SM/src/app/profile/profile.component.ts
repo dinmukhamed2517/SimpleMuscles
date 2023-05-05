@@ -5,6 +5,7 @@ import {Favorite} from "../../models/Favorite";
 import {ExerciseService} from "../services/exercises/exercise.service";
 import {UserService} from "../services/user/user.service";
 import {User} from "../../models/User";
+import {LoginService} from "../services/login/login.service";
 
 @Component({
   selector: 'app-profile',
@@ -18,12 +19,14 @@ export class ProfileComponent implements OnInit{
   favoriteExercises:Exercise[] = []
   logged: boolean = false;
   constructor(private exerciseService:ExerciseService,private userService:UserService,
-              private favoriteService: FavoriteService) {
+              private favoriteService: FavoriteService, private loginService:LoginService) {
 
   }
   ngOnInit() {
-    const token = localStorage.getItem('token');
-    if(token){
+    this.loginService.isAuthenticated().subscribe((data) =>{
+      this.logged = data;
+    })
+    if(this.logged){
       this.userService.get_id().subscribe( (data) => {
         this.user_id = data.user_id;
         if(this.user_id){
@@ -31,24 +34,18 @@ export class ProfileComponent implements OnInit{
         }
       })
     }
-    this.logged =true;
-
   }
   getFavorite(){
     this.favoriteService.getFavorite(this.user_id).subscribe((data) =>{
       this.favorite = data;
-      this.favoriteExercises = this.favorite.exercises;
       this.user = this.favorite.user
+      this.favoriteExercises = this.favorite.exercises;
       })
   }
   remove(exercise_id:number){
     this.favoriteService.removeFromFavorite(exercise_id).subscribe((data) => {
       this.favoriteExercises = this.favoriteExercises.filter((exercise) => exercise.id !== exercise_id);
     })
-  }
-  logout(){
-    localStorage.clear()
-    this.logged = false
   }
 }
 

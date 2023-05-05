@@ -4,7 +4,8 @@
     <li><a routerLink="home">Home</a></li>
     <li><a routerLink="about">About Us</a></li>
     <li><a routerLink="/categories">Categories</a></li>
-    <li class="login"><a routerLink="/login">Login</a></li>
+    <ng-container *ngIf="!logged"><li class="login"><a routerLink="/login">Login</a></li> </ng-container>
+    <ng-container *ngIf="logged"><li class="login"><a (click)="logout()">Log out</a></li> </ng-container>
     <li class="register"><a routerLink="/profile"><i class = "material-icons">person</i></a></li>
   </ul>
 </nav>

@@ -1,0 +1,18 @@
+.favorite-button{
+  border-radius: 5px;
+  border:none;
+  background-color: grey;
+  color:white;
+  height: 40px;
+  margin-left: 50px;
+}
+.favorite-button:hover{
+  background-color: darkgreen;
+}
+
+p{
+  width: 500px;
+}
+*{
+  margin-left: 15px;
+}

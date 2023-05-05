@@ -6,32 +6,7 @@ from api.models import Category, Exercise, Favorite
 from api.serializers import CategorySerializer,ExerciseSerializer
 from api.serializers.favorite import FavoriteSerializer
 from rest_framework.permissions import IsAuthenticated
-
-
-class ExerciseDetailsAPIView(APIView):
-    def get_object(self, exercise_id):
-        try:
-            return Exercise.objects.get(pk=exercise_id)
-        except Exercise.DoesNotExist as e:
-            return Response(str(e), status=status.HTTP_400_BAD_REQUEST)
-
-    def get(self, request, exercise_id):
-        instance = self.get_object(exercise_id)
-        serializer = ExerciseSerializer(instance)
-        return Response(serializer.data)
-
-    def put(self, request, exercise_id):
-        instance = self.get_object(exercise_id)
-        serializer = ExerciseSerializer(instance=instance, data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-    def delete(self, request, exercise_id):
-        instance = self.get_object(exercise_id)
-        instance.delete()
-        return Response({'deleted': True})
+from rest_framework import generics
 
 
 class CategoryListAPIView(APIView):
@@ -48,27 +23,33 @@ class CategoryListAPIView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-class CategoryDetailAPIView(APIView):
-    def get_object(self, category_id):
-        try:
-            return Category.objects.get(pk=category_id)
-        except Category.DoesNotExist as e:
-            return Response(str(e), status=status.HTTP_400_BAD_REQUEST)
+class CategoryDetailsAPIView(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = CategorySerializer
+    lookup_url_kwarg = 'category_id'
+    queryset = Category.objects.all()
 
-    def get(self, request, category_id):
-        instance = self.get_object(category_id)
-        serializer = CategorySerializer(instance)
-        return Response(serializer.data)
 
-    def put(self, request, category_id):
-        instance = self.get_object(category_id)
-        serializer = CategorySerializer(instance=instance, data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+class ExerciseDetailsAPIView(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = ExerciseSerializer
+    lookup_url_kwarg = "exercise_id"
+    queryset = Exercise.objects.all();
 
-    def delete(self, request, category_id):
-        instance = self.get_object(category_id)
-        instance.delete()
-        return Response({'deleted': True})
+    # def put(self, request, *args, **kwargs):
+    #     kwargs['partial'] = True
+    #     return self.update(request, *args, **kwargs)
+
+
+# class UpdateFavoriteExerciseAPIView(generics.UpdateAPIView):
+#     serializer_class = ExerciseSerializer
+#     queryset = Exercise.objects.all()
+#
+#     def update(self, request, *args, **kwargs):
+#         instance = self.get_object()
+#         favorite = Favorite.objects.get(user=request.user)
+#         favorite.exercises.remove(instance)
+#         serializer = self.get_serializer(instance, data=request.data, partial=True)
+#         serializer.is_valid(raise_exception=True)
+#         serializer.save()
+#         favorite.exercises.add(instance)
+#
+#         return Response(serializer.data)

@@ -15,6 +15,9 @@ import { ExerciseDetailsComponent } from './exercise-details/exercise-details.co
 import {FormsModule} from "@angular/forms";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {AuthInterceptor} from "../AuthInterceptor";
+import { CreateExerciseComponent } from './create-exercise/create-exercise.component';
+import { UpdateExerciseComponent } from './update-exercise/update-exercise.component';
+import { AllExercisesComponent } from './all-exercises/all-exercises.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,10 @@ import {AuthInterceptor} from "../AuthInterceptor";
     RegisterComponent,
     ExercisesComponent,
     ProfileComponent,
-    ExerciseDetailsComponent
+    ExerciseDetailsComponent,
+    CreateExerciseComponent,
+    UpdateExerciseComponent,
+    AllExercisesComponent
   ],
   imports: [
     BrowserModule,

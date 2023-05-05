@@ -14,24 +14,26 @@ export class LoginComponent implements OnInit{
   logged:boolean = false;
   username:string = '';
   password:string = '';
-
+  error:boolean = false;
   constructor(private loginService: LoginService, private router:Router, private favoriteService: FavoriteService) {
   }
   ngOnInit():void {
-    const token = localStorage.getItem('token')
-    if(token){
-      this.logged = true;
-    }
+    this.loginService.isAuthenticated().subscribe( (data) =>{
+      this.logged = data;
+    })
   }
   logIn(){
     this.loginService.login(this.username, this.password).subscribe((data) =>{
-      localStorage.setItem('token',data.token);
-      this.username = '';
-      this.password = '';
-      if(localStorage.getItem('token')){
+      localStorage.setItem('token', data.token);
+      if(data.token){
+        this.loginService.isAuthenticatedSubject.next(true);
+        this.router.navigate(['categories'])
       }
-        this.router.navigate(['/categories'])
-        this.logged = true
-    })
+    },
+      error1 => {
+      this.error = true;
+      console.log(error1);
+      }
+    )
   }
 }

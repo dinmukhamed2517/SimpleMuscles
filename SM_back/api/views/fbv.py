@@ -28,6 +28,7 @@ def exercise_by_category_id(request, category_id):
 
 
 @api_view(['POST'])
+@permission_classes([IsAuthenticated])
 def create_favorite(request):
     user = request.user
     try:
@@ -59,12 +60,19 @@ def exercise_by_category(request, category_id):
         return Response(serializer.data)
 
 
-@api_view(['GET'])
+@api_view(['GET', 'POST'])
 def exercise_list(request):
     if request.method == "GET":
         exercises = Exercise.objects.all()
         serializer = ExerciseSerializer(exercises, many=True)
         return Response(serializer.data)
+
+    if request.method == "POST":
+        serializer = ExerciseSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return  Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['GET'])
 @authentication_classes([JSONWebTokenAuthentication])
@@ -75,6 +83,8 @@ def get_user_id(request):
 
 
 @api_view(['DELETE','GET'])
+@permission_classes([IsAuthenticated])
+
 def remove_from_favorites(request, exercise_id):
     user_id = request.user.id
     try:
@@ -88,6 +98,8 @@ def remove_from_favorites(request, exercise_id):
         return Response({'error': 'The specified exercise ID is invalid.'}, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['GET', 'POST'])
+@permission_classes([IsAuthenticated])
+
 def favorite(request, user_id):
     if request.method == "GET":
         favorite = Favorite.objects.get(user_id = user_id)
@@ -95,6 +107,7 @@ def favorite(request, user_id):
         return Response(serializer.data)
 
 @api_view(['POST'])
+@permission_classes([IsAuthenticated])
 def add_to_favorites(request, exercise_id):
     user_id = request.user.id
     try:

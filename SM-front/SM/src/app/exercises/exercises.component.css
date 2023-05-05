@@ -1,8 +1,7 @@
-.category i{
+.category i a{
   font-size: 24px;
 }
 .main {
-  border:1px solid;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -49,3 +48,4 @@
 .favorite-button:hover{
   background-color: darkgreen;
 }
+

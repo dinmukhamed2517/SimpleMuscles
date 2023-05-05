@@ -8,6 +8,7 @@
     <input type="password" id="password" name="password" required [(ngModel)]="password">
     <button (click)="logIn()">Login</button>
   </form>
+    <ng-container *ngIf="error"><span class = "error"> Please correct the username or password!</span></ng-container>
   </ng-container>
 </div>
 

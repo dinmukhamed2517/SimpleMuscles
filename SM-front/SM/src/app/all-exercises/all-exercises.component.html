@@ -1,0 +1,8 @@
+<div class="main">
+  <div class="exercises" *ngFor = "let exercise of exercises">
+    <div class="category">
+      <a class ="link" routerLink="{{exercise.id}}"><i>{{exercise.name}}</i></a>
+      <a><img src="{{exercise.url}}" alt="" class ="img"></a>
+    </div>
+  </div>
+</div>

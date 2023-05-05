@@ -18,10 +18,16 @@ export class ExerciseService {
   }
 
   getExerciseById(exercise_id:number):Observable<Exercise>{
-    return this.client.get<Exercise>(`${this.BASE_URL}/exercises/${exercise_id}/`)
+    return this.client.get<Exercise>(`${this.BASE_URL}/exercises/${exercise_id}`)
   }
 
   getExerciseByCategory(category_id:number):Observable<Exercise []>{
     return this.client.get<Exercise []>(`${this.BASE_URL}/categories/${category_id}/exercises`);
+  }
+  createExercise(name:string, description:string, url:string, category:number):Observable<Exercise>{
+    return this.client.post<Exercise>(`${this.BASE_URL}/exercises/`,{name, description, url, category })
+  }
+  updateExercise(name:string, description:string, url:string, category:number):Observable<Exercise>{
+    return this.client.post<Exercise>(`${this.BASE_URL}/exercises/`,{name, description, url, category })
   }
 }

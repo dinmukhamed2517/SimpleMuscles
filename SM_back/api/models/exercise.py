@@ -7,3 +7,6 @@ class Exercise(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     description = models.TextField()
     url = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.name

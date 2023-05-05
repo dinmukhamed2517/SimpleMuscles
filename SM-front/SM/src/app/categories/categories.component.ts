@@ -9,13 +9,8 @@ import {Category} from "../../models/category";
 })
 export class CategoriesComponent implements OnInit{
   categories!: Category[];
-  logged : boolean  = false;
   ngOnInit():void {
-    const token = localStorage.getItem('token');
-    if(token){
-      this.getCategories();
-      this.logged =true;
-    }
+    this.getCategories();
   }
   constructor(private CategoryService : CategoryService) {
   }

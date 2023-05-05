@@ -12,10 +12,7 @@ import {FavoriteService} from "../services/favorite/favorite.service";
 export class ExercisesComponent implements OnInit{
   exercises: Exercise[] = [];
   ngOnInit():void {
-    const token = localStorage.getItem('token')
-    if(token){
-      this.getExercises();
-    }
+    this.getExercises();
   }
   constructor(private exerciseService:ExerciseService,private route:ActivatedRoute,
               private favoriteService: FavoriteService) {
@@ -30,16 +27,4 @@ export class ExercisesComponent implements OnInit{
       }
     })
   }
-  addToFavorite(exercise_id:number){
-    this.favoriteService.addToFavorite(exercise_id).subscribe();
-  }
-
-  // isFavorite(exercise:Exercise):void{
-  //   if(exercise.favorite === true){
-  //     exercise.favorite = false;
-  //   }
-  //   else{
-  //     exercise.favorite = true
-  //   }
-  // }
 }
